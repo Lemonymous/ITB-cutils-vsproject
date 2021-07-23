@@ -6,6 +6,7 @@
 #include "board.h"
 #include "pawn.h"
 #include "game.h"
+#include "misc.h"
 
 #define DLLEXPORT __declspec(dllexport)
 
@@ -29,6 +30,11 @@ extern "C" DLLEXPORT int luaopen_inspect(lua_State* L) {
 		add_debug_functions(L);
 		lua_rawset(L, -3);
 	}
+
+	lua_pushstring(L, "Misc");
+	lua_newtable(L);
+	add_misc_functions(L);
+	lua_rawset(L, -3);
 
 	lua_pushstring(L, "Board");
 	lua_newtable(L);

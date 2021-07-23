@@ -181,6 +181,7 @@
     <ClCompile Include="lua_tile.cpp">
       <FileType>CppCode</FileType>
     </ClCompile>
+    <ClCompile Include="misc.cpp" />
     <ClCompile Include="options.cpp" />
     <ClCompile Include="pawn.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -203,6 +204,7 @@
     <ClInclude Include="lua_obj.h" />
     <ClInclude Include="lua_pawn.h" />
     <ClInclude Include="lua_tile.h" />
+    <ClInclude Include="misc.h" />
     <ClInclude Include="options.h" />
     <ClInclude Include="pawn.h" />
     <ClInclude Include="stdafx.h" />
