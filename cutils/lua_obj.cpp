@@ -24,7 +24,30 @@ void*** lua_obj::getUserdata() { return userdata; }
 size_t lua_obj::getAddr() { return addr; }
 
 template <typename type>
+type def() {
+	return NULL;
+}
+
+template int def<int>();
+template unsigned char def<unsigned char>();
+template unsigned int def<unsigned int>();
+template double def<double>();
+
+template <>
+bool def<bool>() {
+	return false;
+}
+
+template <>
+const char* def<const char*>() {
+	return "";
+}
+
+template <typename type>
 type lua_obj::read(size_t delta) {
+	if (addr == NULL)
+		return def<type>();
+
 	return *(type*)(addr + delta);
 }
 
@@ -35,15 +58,24 @@ template bool lua_obj::read<bool>(size_t);
 template double lua_obj::read<double>(size_t);
 template <>
 const char* lua_obj::read<const char*>(size_t delta) {
+	if (addr == NULL)
+		return def<const char*>();
+
 	return static_cast<std::string*>((void*)(addr + delta))->c_str();
 }
 template <>
 std::string* lua_obj::read<std::string*>(size_t delta) {
+	if (addr == NULL)
+		return def<std::string*>();
+
 	return static_cast<std::string*>((void*)(addr + delta));
 }
 
 template <typename type>
 void lua_obj::write(size_t delta, type value) {
+	if (addr == NULL)
+		return;
+
 	type* ptr = (type*)(addr + delta);
 	*ptr = value;
 }
@@ -55,12 +87,18 @@ template void lua_obj::write<bool>(size_t, bool);
 template void lua_obj::write<double>(size_t, double);
 template <>
 void lua_obj::write<const char*>(size_t delta, const char* value) {
+	if (addr == NULL)
+		return;
+
 	std::string new_string(value);
 	std::string* ptr = static_cast<std::string*>((void*)(addr + delta));
 	*ptr = new_string;
 }
 template <>
 void lua_obj::write<std::string*>(size_t delta, std::string* value) {
+	if (addr == NULL)
+		return;
+
 	std::string* ptr = static_cast<std::string*>((void*)(addr + delta));
 	*ptr = *value;
 }

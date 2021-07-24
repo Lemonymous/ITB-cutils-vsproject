@@ -29,9 +29,13 @@ lua_tile::lua_tile(lua_State* L, int index) {
 	this->y = luaL_checkinteger(L, index + 1);
 	// userdata can remain as the board userdata
 
-	size_t tiles_row = *(size_t*)(board.getAddr() + BOARD_TILES_ROW);
-	size_t tiles_column = *(size_t*)(tiles_row + BOARD_TILES_COLUMN * x);
-	addr = tiles_column + TILE_OBJ_SIZE * y;
+	if (x < 0 || x > 7 || y < 0 || y > 7)
+		addr = NULL;
+	else {
+		size_t tiles_row = *(size_t*)(board.getAddr() + BOARD_TILES_ROW);
+		size_t tiles_column = *(size_t*)(tiles_row + BOARD_TILES_COLUMN * x);
+		addr = tiles_column + TILE_OBJ_SIZE * y;
+	}
 }
 
 lua_tile::~lua_tile() {}

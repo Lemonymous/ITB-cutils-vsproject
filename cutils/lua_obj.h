@@ -25,3 +25,6 @@ protected:
 	void*** userdata;
 	size_t addr;
 };
+
+template <typename type>
+type def();
