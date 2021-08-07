@@ -15,7 +15,7 @@ std::vector<Address> tileAddr {
 	Address::build<lua_tile, int>("Health", 0x74, RW),
 	Address::build<lua_tile, int>("MaxHealth", 0x78, RW),
 	Address::build<lua_tile, int>("LostHealth", 0x80, RW),
-	Address::build<lua_tile, bool>("Highlighted", 0x1F98, R),
+	Address::build<lua_tile, bool>("Highlighted", 0x2400, R),
 	Address::build<lua_tile, const char*>("TerrainIcon", 0x2394, R),
 	Address::build<lua_tile, int>("UniqueBuilding", 0x23E8, R),
 	Address::build<lua_tile, int>("UniqueBuildingObject", 0x24A4, R),
