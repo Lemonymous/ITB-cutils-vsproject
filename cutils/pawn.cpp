@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "address.h"
+#include "function.h"
 #include "pawn.h"
 #include "lua_pawn.h"
 #include "map"
@@ -49,6 +50,12 @@ std::vector<Address> pawnAddr{
 	Address::build<lua_pawn, int>("Owner", 0x1118, RW),
 };
 
+std::vector<Function> weaponAddr{
+	Function::build("GetWeaponCount", lua_pawn::getWeaponCount),
+	Function::build("GetWeapon", lua_pawn::getWeapon),
+	Function::build("GetPoweredWeapon", lua_pawn::getPoweredWeapon),
+};
+
 void add_pawn_functions(lua_State* L) {
 	if (!lua_istable(L, -1))
 		luaL_error(L, "add_pawn_functions failed: parent table does not exist");
@@ -57,6 +64,7 @@ void add_pawn_functions(lua_State* L) {
 		log(L, "Additional Pawn functions = {");
 
 	Address::addLuaFunctions(L, pawnAddr);
+	Function::addLuaFunctions(L, weaponAddr);
 
 	if (VERBOSE)
 		log(L, "}");
