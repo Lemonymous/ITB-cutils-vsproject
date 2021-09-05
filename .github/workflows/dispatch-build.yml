@@ -33,7 +33,7 @@ jobs:
     name: Dispatch
     runs-on: ubuntu-latest
     needs: build
-    if: needs.build.outputs.status == 'success'
+    if: github.ref == 'refs/heads/master' && needs.build.outputs.status == 'success'
     env:
       SOLUTION_FILE_PATH: .
       BUILD_CONFIGURATION: Release
