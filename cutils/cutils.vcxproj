@@ -162,6 +162,7 @@
     <ClCompile Include="cutils.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Function.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="lua_board.cpp">
@@ -195,6 +196,7 @@
     <ClInclude Include="address.h" />
     <ClInclude Include="board.h" />
     <ClInclude Include="debug.h" />
+    <ClInclude Include="Function.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="log.h" />
     <ClInclude Include="lua_board.h" />
