@@ -7,6 +7,7 @@
 std::vector<Address> pawnAddr{
 	Address::build<lua_pawn, int>("QueuedTargetX", 0x20, RW),
 	Address::build<lua_pawn, int>("QueuedTargetY", 0x24, RW),
+	Address::build<lua_pawn, int>("QueuedWeaponId", 0x28, R),
 	Address::build<lua_pawn, int>("DefaultTeam", 0x40, RW),
 	//Address::build<lua_pawn, int>("RepairSkill", 0x64, R),
 	Address::build<lua_pawn, int>("Team", 0xAC, RW),
