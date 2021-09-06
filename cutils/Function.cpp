@@ -21,7 +21,7 @@ void Function::addLuaFunctions(lua_State* L, std::vector<Function> functions) {
 	for (auto function : functions) {
 
 		if (VERBOSE)
-			log(L, ("[]: " + function.id).c_str());
+			log(L, ("[-]: " + function.id).c_str());
 
 		function.addLuaFunction(L);
 	}
