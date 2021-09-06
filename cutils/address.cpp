@@ -75,19 +75,27 @@ void Address::addLuaFunctions(lua_State* L, std::vector<Address> addresses) {
 		bool writeAccess = (address.access == W || address.access == RW);
 
 		if (readAccess) {
-			if (!GET_FUNCS)
+			std::string status = "";
+
+			if (!GET_FUNCS) {
 				address.get.func = LuaFunction::get_default;
+				status = " - disabled";
+			}
 			if (VERBOSE)
-				logf(L, ("[0x%X]: " + address.get.name).c_str(), address.delta);
+				logf(L, ("[0x%X]: " + address.get.name + status).c_str(), address.delta);
 
 			address.addLuaFunction(L, address.delta, &address.get);
 		}
 
 		if (writeAccess) {
-			if (!SET_FUNCS)
+			std::string status = "";
+
+			if (!SET_FUNCS) {
 				address.set.func = LuaFunction::set_default;
+				status = " - disabled";
+			}
 			if (VERBOSE)
-				logf(L, ("[0x%X]: " + address.set.name).c_str(), address.delta);
+				logf(L, ("[0x%X]: " + address.set.name + status).c_str(), address.delta);
 
 			address.addLuaFunction(L, address.delta, &address.set);
 		}

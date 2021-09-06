@@ -15,8 +15,10 @@ void add_misc_functions(lua_State* L) {
 	if (!lua_istable(L, -1))
 		luaL_error(L, "add_misc_functions failed: parent table does not exist");
 
-	if (VERBOSE)
+	if (VERBOSE) {
 		log(L, "Additional Misc functions = {");
+		log(L, "[-]: SetUserdataMetatable");
+	}
 
 	lua_pushstring(L, "SetUserdataMetatable");
 	lua_pushcfunction(L, set_userdata_metatable);

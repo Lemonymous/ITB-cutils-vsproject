@@ -24,11 +24,15 @@ void lua_push<int>(lua_State* L, int value) { lua_pushinteger(L, value); }
 template <>
 void lua_push<bool>(lua_State* L, bool value) { lua_pushboolean(L, value); }
 template <>
+void lua_push<char>(lua_State* L, char value) { lua_pushinteger(L, value); }
+template <>
 void lua_push<unsigned int>(lua_State* L, unsigned int value) { lua_pushinteger(L, value); }
 template <>
 void lua_push<unsigned char>(lua_State* L, unsigned char value) { lua_pushinteger(L, value); }
 template <>
 void lua_push<double>(lua_State* L, double value) { lua_pushnumber(L, value); }
+template <>
+void lua_push<float>(lua_State* L, float value) { lua_pushnumber(L, value); }
 template <>
 void lua_push<const char*>(lua_State* L, const char* value) { lua_pushstring(L, value); }
 template <>
