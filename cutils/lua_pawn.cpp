@@ -61,7 +61,7 @@ int lua_pawn::getWeaponCount(lua_State* L) {
 
 int lua_pawn::getWeapon(lua_State* L) {
 	lua_pawn pawn = lua_pawn(L, 1);
-	size_t weaponId = luaL_checknumber(L, 2);
+	size_t weaponId = luaL_checkinteger(L, 2);
 	std::vector<Weapon>* weaponList = pawn.getWeaponList();
 
 	if (weaponId >= weaponList->size())
@@ -78,7 +78,7 @@ int lua_pawn::getWeapon(lua_State* L) {
 
 int lua_pawn::getPoweredWeapon(lua_State* L) {
 	lua_pawn pawn = lua_pawn(L, 1);
-	size_t weaponId = luaL_checknumber(L, 2);
+	size_t weaponId = luaL_checkinteger(L, 2);
 	std::vector<Weapon>* weaponList = pawn.getWeaponList();
 
 	if (weaponId >= weaponList->size())
