@@ -46,10 +46,6 @@ int logf(lua_State* L, const char* s, std::vector<type> v) {
 	lua_getglobal(L, "LOGF");
 	lua_pushstring(L, s);
 
-	//for (size_t i = 0; i < v.size(); i++)
-		//push_tostring(L, v[i]);
-	//for (auto i = v.begin(); i != v.end(); i++)
-		//push_tostring(L, *i);
 	for (type n : v)
 		push_tostring(L, n);
 
@@ -57,23 +53,6 @@ int logf(lua_State* L, const char* s, std::vector<type> v) {
 
 	return 0;
 }
-
-/*template <>
-int logf(lua_State* L, const char* s, std::vector<const char*> v) {
-	lua_getglobal(L, "LOGF");
-	lua_pushstring(L, s);
-
-	//for (size_t i = 0; i < v.size(); i++)
-		//push_tostring(L, v[i]);
-	//for (auto i = v.begin(); i != v.end(); i++)
-		//push_tostring(L, *i);
-	for (const char* & n : v)
-		push_tostring(L, n);
-
-	lua_call(L, 1 + v.size(), 0);
-
-	return 0;
-}*/
 
 // LOG
 template <typename type>
@@ -91,10 +70,6 @@ int log(lua_State* L, const char* s, std::vector<type> v) {
 	lua_getglobal(L, "LOG");
 	lua_pushstring(L, s);
 
-	//for (size_t i = 0; i < v.size(); i++)
-		//push_tostring(L, v[i]);
-	//for (auto i = v.begin(); i != v.end(); i++)
-		//push_tostring(L, *i);
 	for (type n : v)
 		push_tostring(L, n);
 
@@ -102,22 +77,6 @@ int log(lua_State* L, const char* s, std::vector<type> v) {
 
 	return 0;
 }
-/*template <>
-int log(lua_State* L, const char* s, std::vector<const char*> v) {
-	lua_getglobal(L, "LOG");
-	lua_pushstring(L, s);
-
-	for (size_t i = 0; i < v.size(); i++)
-		push_tostring(L, v[i]);
-	//for (auto i = v.begin(); i < v.end(); i++)
-		//push_tostring(L, *i);
-	//for (const char* & n : v)
-		//push_tostring(L, n);
-
-	lua_call(L, 1 + v.size(), 0);
-
-	return 0;
-}*/
 
 // simple LOG
 int log(lua_State* L, const char* s) {
