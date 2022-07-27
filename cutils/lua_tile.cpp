@@ -2,9 +2,9 @@
 #include "lua_tile.h"
 #include "lua_board.h"
 
-const size_t BOARD_TILES_ROW = 0x4C;
+const size_t BOARD_TILES_ROW = 0x50;
 const size_t BOARD_TILES_COLUMN = 0xC;
-const size_t TILE_OBJ_SIZE = 0x285C;
+const size_t TILE_OBJ_SIZE = 0x2BB8;
 
 /*
 	Creates an object with the address of a tile
